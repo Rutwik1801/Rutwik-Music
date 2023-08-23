@@ -6,7 +6,10 @@ import beintehaan from "./audio/Beintehaan.mp4"; // importing the music
 import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai"; // icons for play and pause
 import { BiSkipNext, BiSkipPrevious } from "react-icons/bi"; // icons for next and previous track
 import { IconContext } from "react-icons"; // for customazing the icons
-function Player({image,title,song}) {
+function Player({image,title,song,lyrics}) {
+    // const lyrics="Aadhe se chaand ko takta rahu mai , poora ho tere chehre se , Duaon me maangu naa mere liye kuch,jo de wo rab sab tujhko,Aisi lagan tujh se laagi hai jo…na pehle mehsoos kiii thi,Nadiyaan hai milti samundar me waise,Milte hai dil tere mere,Beintehaan…..ishq guwaah…ishq khudaaa,poora ho tere chehre se , Duaon me maangu naa mere liye kuch,jo de wo rab sab tujhko,Aisi lagan tujh se laagi hai jo…na pehle mehsoos kiii thi,Nadiyaan hai milti samundar me waise,Milte hai dil tere mere,Beintehaan…..ishq guwaah…ishq khudaaa."
+    var formattedString = lyrics.split(",")
+    const [showLyrics,setShowLyrics]=useState(false)
     const [currTime, setCurrTime] = useState({
         min: "",
         sec: "",
@@ -47,17 +50,35 @@ function Player({image,title,song}) {
           setIsPlaying(true);
         }
       };
+      const handleLyricsButtonCLick=()=>{
+      setShowLyrics(!showLyrics)
+      }
   return (
         <div 
         className="component"
         >
-          {/* <h2>Playing Now</h2> */}
-          <div style={{width:"100%",height:"400px",overflow:"hidden"}}>
-          <img
+          <div style={{width:"100%",overflow:"hidden",position:"relative"}}>
+            <button onClick={handleLyricsButtonCLick} style={{position:"absolute",zIndex:20,right:3,top:3,backgroundColor:"#27856A",border:"1px solid black",fontWeight:300,fontSize:"1em",outline:"none",letterSpacing:"2px",padding:"4px 6px",fontFamily:"Roboto"}}>{!showLyrics?"View Lyrics":"Hide Lyrics"}</button>
+          {!showLyrics && <img
           style={{maxWidth:"100%"}}
-            // className="musicCover"
+            src={image}
+          />}
+                    {showLyrics && 
+                    <div>
+                        <div style={{position:"absolute",zIndex:2,overflowY:"scroll",textAlign:"center",maxHeight:"100%",marginTop:"15px",width:"100%"}}>
+                        {formattedString.map((str)=>{
+                            return(
+                                <p style={{zIndex:"3",fontSize:"20px",fontWeight:300,lineHeight:1.4,wordSpacing:"2px"}}>{str}</p>
+                            )
+                        })}
+                        </div>
+                       
+                    <img
+          style={{maxWidth:"100%",filter:"brightness(0.4) blur(4px)"}}
             src={image}
           />
+                    </div>}
+          
           </div>
 
           <div style={{textAlign:"center"}}>
