@@ -1,6 +1,6 @@
 import React from 'react'
 import Rutwik from "./covers/Rutwik.svg"
-import { BiLogoInstagram, BiSkipPrevious } from "react-icons/bi"; // icons for next and previous track
+import { BiLogoInstagram } from "react-icons/bi"; // icons for next and previous track
 import { IconContext } from "react-icons"; // for customazing the icons
 
 function Footer() {
@@ -9,23 +9,11 @@ function Footer() {
         <div>
             <img src={Rutwik}/>
         </div>
-        <div style={{display:"flex",gap:8,alignItems:"center"}}>
-        <button>
+        <a href='https://www.instagram.com/rutwik1801/'>
                 <IconContext.Provider value={{ size: "4em", color: "#27AE60" }}>
                   <BiLogoInstagram />
                 </IconContext.Provider>
-              </button>
-              <button>
-                <IconContext.Provider value={{ size: "4em", color: "#27AE60" }}>
-                  <BiLogoInstagram />
-                </IconContext.Provider>
-              </button>
-              <button>
-                <IconContext.Provider value={{ size: "4em", color: "#27AE60" }}>
-                  <BiLogoInstagram />
-                </IconContext.Provider>
-              </button>
-        </div>
+              </a>
     </div>
   )
 }
