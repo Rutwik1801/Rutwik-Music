@@ -6,6 +6,7 @@ import beintehaan from "./audio/Beintehaan.mp4"; // importing the music
 import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai"; // icons for play and pause
 import { BiSkipNext, BiSkipPrevious } from "react-icons/bi"; // icons for next and previous track
 import { IconContext } from "react-icons"; // for customazing the icons
+
 function Player({image,title,song,lyrics}) {
     // const lyrics="Aadhe se chaand ko takta rahu mai , poora ho tere chehre se , Duaon me maangu naa mere liye kuch,jo de wo rab sab tujhko,Aisi lagan tujh se laagi hai jo…na pehle mehsoos kiii thi,Nadiyaan hai milti samundar me waise,Milte hai dil tere mere,Beintehaan…..ishq guwaah…ishq khudaaa,poora ho tere chehre se , Duaon me maangu naa mere liye kuch,jo de wo rab sab tujhko,Aisi lagan tujh se laagi hai jo…na pehle mehsoos kiii thi,Nadiyaan hai milti samundar me waise,Milte hai dil tere mere,Beintehaan…..ishq guwaah…ishq khudaaa."
     var formattedString = lyrics.split(",")
@@ -58,9 +59,9 @@ function Player({image,title,song,lyrics}) {
         className="component"
         >
           <div style={{width:"100%",overflow:"hidden",position:"relative"}}>
-            <button onClick={handleLyricsButtonCLick} style={{position:"absolute",zIndex:20,right:3,top:3,backgroundColor:"#27856A",border:"1px solid black",fontWeight:300,fontSize:"1em",outline:"none",letterSpacing:"2px",padding:"4px 6px",fontFamily:"Roboto"}}>{!showLyrics?"View Lyrics":"Hide Lyrics"}</button>
+            <button onClick={handleLyricsButtonCLick} style={{position:"absolute",zIndex:20,right:3,top:3,backgroundColor:"#27856A",color:"black",border:"1px solid black",fontWeight:300,fontSize:"1em",outline:"none",letterSpacing:"2px",padding:"4px 6px",fontFamily:"Roboto"}}>{!showLyrics?"View Lyrics":"Hide Lyrics"}</button>
           {!showLyrics && <img
-          style={{maxWidth:"100%"}}
+          style={{maxWidth:"100%",transition:"all ease-in 0.4s"}}
             src={image}
           />}
                     {showLyrics && 
